@@ -1,0 +1,2 @@
+# StockManagementSystem
+oop at gnu
