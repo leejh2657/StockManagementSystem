@@ -17,7 +17,7 @@ public class Stock {
 	}
 	
 	public void printInfo() {
-		System.out.println("number:" + number + "name:" + name + "manufacturing date:" + mdate + "expiration date:" + edate);
+		System.out.println("number:" + this.number + "name:" + this.name + "manufacturing date:" + this.mdate + "expiration date:" + this.edate);
 		
 	}
 }
