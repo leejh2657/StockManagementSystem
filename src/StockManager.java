@@ -38,6 +38,7 @@ public class StockManager {
 
 		if (index >= 0) {
 			stocks.remove(index);
+			Stock.numStockRegistered--;
 			System.out.println("the stock" + stocknumber + "is deleted");
 
 		}
@@ -92,6 +93,7 @@ public class StockManager {
 	public void viewStocks() {
 		//		System.out.print("Stock Number:");
 		//		int stocknumber = input.nextInt();
+		System.out.println("# of registered stocks:" + Stock.numStockRegistered);
 		for (int i = 0; i<stocks.size(); i++) {
 			stocks.get(i).printInfo();
 
