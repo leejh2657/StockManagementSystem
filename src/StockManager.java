@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import stock.AgriculturalStock;
+import stock.Stock;
+
 public class StockManager {
 	ArrayList<Stock> stocks = new ArrayList<Stock>();
 	Scanner input;
@@ -11,17 +14,31 @@ public class StockManager {
 	}
 
 	public void addStock() {
-		Stock stock = new Stock();
-		System.out.print("Stock Number:");
-		stock.number = input.nextInt();
-		System.out.print("Stock Name:");
-		stock.name = input.next();
-		System.out.print("Stock Manufacturing Date:");
-		stock.mdate = input.next();
-		System.out.print("Stock Expiration Date:");
-		stock.edate = input.next();
-		stocks.add(stock);
-
+		int kind = 0;
+		Stock stock;
+		while (kind != 1 && kind != 2) {
+			System.out.print("Select Stock Kind:");
+			System.out.print("1 for Industrial Stock:");
+			System.out.print("2 for Agricultural Stock:");
+			System.out.print(" Select num for Stock Kind between 1 and 2:");
+		    kind = input.nextInt();
+			if (kind ==1) {
+				stock = new Stock ();
+				stock.getUserInput(input);
+				stocks.add(stock);
+				break;
+			}
+			else if (kind ==2) {
+				stock = new AgriculturalStock ();
+				stock.getUserInput(input);
+				stocks.add(stock);
+				break;
+				//
+			}
+			else {
+				System.out.print("Select num for Stock Kind between 1 and 2:");
+			}
+		}
 	}
 
 	public void deleteStock() {
@@ -29,7 +46,7 @@ public class StockManager {
 		int stocknumber = input.nextInt();
 		int index = -1;
 		for (int i = 0; i<stocks.size(); i++) {
-			if (stocks.get(i).number == stocknumber ) {
+			if (stocks.get(i).getNumber() == stocknumber ) {
 				index = i;
 				break;
 
@@ -37,7 +54,6 @@ public class StockManager {
 		}
 
 		if (index >= 0) {
-			Stock.numStockRegistered--;
 			stocks.remove(index);
 			System.out.println("the stock" + stocknumber + "is deleted");
 
@@ -54,7 +70,7 @@ public class StockManager {
 		int stocknumber = input.nextInt();
 		for (int i = 0; i<stocks.size(); i++) {
 			Stock stock = stocks.get(i);
-			if (stock.number == stocknumber ) {
+			if (stock.getNumber() == stocknumber ) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("** Stock Info Edit Menu **");
@@ -67,19 +83,23 @@ public class StockManager {
 					num = input.nextInt();
 					if (num == 1) {
 						System.out.print("Stock Number:");
-						stock.number = input.nextInt();
+						int number = input.nextInt();
+						stock.setNumber(number);
 					}
 					else if (num == 2) {
 						System.out.print("Stock Name:");
-						stock.name = input.next();
+						String name = input.next();
+						stock.setName(name);
 					}
 					else if (num == 3) {
 						System.out.print("Stock Manufacturing Date:");
-						stock.mdate = input.next();
+						String mdate = input.next();
+						stock.setMdate(mdate);
 					}
 					else if (num == 4) {
 						System.out.print("Stock Expiration Date:");
-						stock.edate = input.next();
+						String edate = input.next();
+						stock.setEdate(edate);
 					}
 					else {
 						continue;
@@ -93,7 +113,7 @@ public class StockManager {
 	public void viewStocks() {
 		//		System.out.print("Stock Number:");
 		//		int stocknumber = input.nextInt();
-		System.out.println("# of registered stocks:" + Stock.numStockRegistered);
+		System.out.println("# of registered stocks:" + stocks.size());
 		for (int i = 0; i<stocks.size(); i++) {
 			stocks.get(i).printInfo();
 
