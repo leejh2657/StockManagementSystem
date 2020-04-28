@@ -11,9 +11,21 @@ public class Stock {
 	protected String edate;
 	
 	public Stock () {
-}
+	}
+	
+	public Stock (StockKind Kind) {
+		this.kind = kind;
+	}
 	
 	public Stock(int number, String name, String mdate, String edate) {
+		this.number = number;
+		this.name = name;
+		this.mdate = mdate;
+		this.edate = edate;
+	}
+	
+	public Stock(StockKind kind, int number, String name, String mdate, String edate) {
+		this.kind = kind;
 		this.number = number;
 		this.name = name;
 		this.mdate = mdate;
@@ -61,7 +73,24 @@ public class Stock {
 	}
 	
 	public void printInfo() {
-		System.out.println("number:" + this.number + "name:" + this.name + "manufacturing date:" + this.mdate + "expiration date:" + this.edate);
+		String skind = "none";
+		switch(this.kind) {
+		case Industrial:
+			skind = "Ind";
+			break;
+		case Agriculture:
+			skind = "Agri";
+			break;
+		case Fishery:
+			skind = "Fish";
+			break;
+		case Meat:
+			skind = "meat";
+			break;
+		default:
+			
+		}
+		System.out.println("kind:" + skind + "number:" + this.number + "name:" + this.name + "manufacturing date:" + this.mdate + "expiration date:" + this.edate);
 		
 	}
 	

@@ -3,6 +3,12 @@ package stock;
 import java.util.Scanner;
 
 public class AgriculturalStock extends Stock {
+	
+	public AgriculturalStock (StockKind Kind) {
+		this.kind = kind;
+	}
+	
+ 
 	public void getUserInput(Scanner input) {
 		System.out.print("Stock Number:");
 		int number = input.nextInt();
@@ -27,7 +33,9 @@ public class AgriculturalStock extends Stock {
 				break;
 			}
 			else if (answer == 'n' || answer == 'N') {
-				this.setEdate("");
+				System.out.print("Stock Selling period:");
+				String edate = input.next();
+				this.setEdate(edate);
 				break;
 			}
 			else {

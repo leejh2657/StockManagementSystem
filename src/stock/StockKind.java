@@ -4,7 +4,7 @@ public enum StockKind {
 	Industrial,
 	Agriculture,
 	Fishery,
-	Animal;
+	Meat;
 
 	
 
