@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import stock.AgriculturalStock;
 import stock.FisheryStock;
+import stock.MeatStock;
 import stock.Stock;
 import stock.StockKind;
 
@@ -45,8 +46,14 @@ public class StockManager {
 				stocks.add(stock);
 				break;
 			}
+			else if (kind ==4) {
+				stock = new MeatStock (StockKind.Meat);
+				stock.getUserInput(input);
+				stocks.add(stock);
+				break;
+			}
 			else {
-				System.out.print("Select num for Stock Kind between 1 and 2:");
+				System.out.print("Select num for Stock Kind between 1, 2, 3 and 4:");
 			}
 		}
 	}
