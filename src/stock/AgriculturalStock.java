@@ -8,28 +8,25 @@ public class AgriculturalStock extends Stock {
 		this.kind = kind;
 	}
 	
- 
+	
+	
 	public void getUserInput(Scanner input) {
-		System.out.print("Stock Number:");
-		int number = input.nextInt();
-		this.setNumber(number);
+		setStockNumber(input);
+		setStockName(input); 
+		setStockMdate(input); 
+		setStockEdatewithYN(input);
 		
-		System.out.print("Stock Name:");
-		String name = input.next();
-		this.setName(name);
 		
-		System.out.print("Stock Manufacturing Date:");
-		String mdate = input.next();
-		this.setMdate(mdate);
 		
+	}
+	
+	public void setStockEdatewithYN(Scanner input) {
 		char answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.print("Does it has an Expiration Date? (Y/N) ");
 			answer = input.next().charAt(0);
 			if (answer == 'y' || answer == 'Y') {
-				System.out.print("Stock Expiration Date:");
-				String edate = input.next();
-				this.setEdate(edate);
+				setStockEdate(input);
 				break;
 			}
 			else if (answer == 'n' || answer == 'N') {
@@ -37,11 +34,16 @@ public class AgriculturalStock extends Stock {
 				String edate = input.next();
 				this.setEdate(edate);
 				break;
-			}
+			} 
 			else {
 
 			}
 		}
 	}
-
+	
+	public void printInfo() {
+		String skind = getKindString();
+		System.out.println("kind:" + skind + "number:" + this.number + "name:" + this.name + "manufacturing date:" + this.mdate + "expiration date:" + this.edate);
+		
+	}
 }

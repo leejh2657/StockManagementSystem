@@ -2,7 +2,7 @@ package stock;
 
 import java.util.Scanner;
 
-public class Stock {
+public abstract class Stock implements StockInput {
 
 	protected StockKind kind = StockKind.Industrial;
 	protected int number;
@@ -72,7 +72,30 @@ public class Stock {
 		this.edate = edate;
 	}
 	
-	public void printInfo() {
+	public abstract void printInfo(); 
+	
+	public void setStockNumber(Scanner input) {
+		System.out.print("Stock Number:");
+		int number = input.nextInt();
+		this.setNumber(number);
+	}
+	public void setStockName(Scanner input) {
+		System.out.print("Stock Name:");
+		String name = input.next();
+		this.setName(name);
+	}
+	public void setStockMdate(Scanner input) {
+		System.out.print("Stock Manufacturing Date:");
+		String mdate = input.next();
+		this.setMdate(mdate);
+	}
+	public void setStockEdate(Scanner input) {
+		System.out.print("Stock Expiration Date:");
+		String edate = input.next();
+		this.setEdate(edate);
+	}
+	
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Industrial:
@@ -85,33 +108,13 @@ public class Stock {
 			skind = "Fish";
 			break;
 		case Meat:
-			skind = "meat";
+			skind = "Meat";
 			break;
-		default:
-			
+		default:	
 		}
-		System.out.println("kind:" + skind + "number:" + this.number + "name:" + this.name + "manufacturing date:" + this.mdate + "expiration date:" + this.edate);
-		
-	}
-	
-	public void getUserInput(Scanner input) {
-		System.out.print("Stock Number:");
-		int number = input.nextInt();
-		this.setNumber(number);
-		
-		System.out.print("Stock Name:");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Stock Manufacturing Date:");
-		String mdate = input.next();
-		this.setMdate(mdate);
-		
-		System.out.print("Stock Expiration Date:");
-		String edate = input.next();
-		this.setEdate(edate);
-		
-	}
+		return skind;
+			
+	}	
 }
 
 	

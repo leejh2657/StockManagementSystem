@@ -5,36 +5,40 @@ public class MenuManager {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		StockManager stockManager = new StockManager(input);
-		
+
 		int num = -1;
 		while (num != 5) {
-			System.out.println("*** Stock Management System Menu ***");
-			System.out.println(" 1. Add Stock");
-			System.out.println(" 2. Delete Stock"); 
-			System.out.println(" 3. Edit Stock"); 
-			System.out.println(" 4. View Stocks");  
-			System.out.println(" 5. Exit"); 
-			System.out.println("Select one number between 1 - 5:");
+			showMenu();
 			num = input.nextInt();
-			if (num == 1) {
+			switch(num) {
+			case 1:
 				stockManager.addStock();
-			}
-			else if (num == 2) {
+				break;
+			case 2:
 				stockManager.deleteStock();
-			}
-			else if (num == 3) {
+				break;
+			case 3:
 				stockManager.editStock();
-			}
-			else if (num == 4) {
+				break;
+			case 4:
 				stockManager.viewStocks();
-			}
-			else {
-				continue;
+				break;
+				default:
+					continue;
 			}
 		}
-
-    }
-}
+	}
 	
+	public static void showMenu() { 
+		System.out.println("*** Stock Management System Menu ***");
+		System.out.println(" 1. Add Stock");
+		System.out.println(" 2. Delete Stock"); 
+		System.out.println(" 3. Edit Stock"); 
+		System.out.println(" 4. View Stocks");  
+		System.out.println(" 5. Exit"); 
+		System.out.println("Select one number between 1 - 5:");
+	}
+}
+
 
 
