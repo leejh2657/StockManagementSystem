@@ -2,6 +2,8 @@ package stock;
 
 import java.util.Scanner;
 
+import exception.MdateFormatException;
+
 public abstract class Stock implements StockInput {
 
 	protected StockKind kind = StockKind.Industrial;
@@ -60,7 +62,11 @@ public abstract class Stock implements StockInput {
 		return mdate;
 	}
 
-	public void setMdate(String mdate) {
+	public void setMdate(String mdate) throws MdateFormatException {
+		if (!mdate.contains("day") && !mdate.equals("")) {
+			throw new MdateFormatException();
+		}
+		
 		this.mdate = mdate;
 	}
 
@@ -85,9 +91,17 @@ public abstract class Stock implements StockInput {
 		this.setName(name);
 	}
 	public void setStockMdate(Scanner input) {
+		String madte = "";
+		while (!mdate.contains("day")) {
 		System.out.print("Stock Manufacturing Date:");
 		String mdate = input.next();
-		this.setMdate(mdate);
+		try {
+			this.setMdate(mdate);
+		} catch (MdateFormatException e) {
+			System.out.println("Incorrect Mdate Format. Put the date that contains ");
+			e.printStackTrace();
+		}
+		}
 	}
 	public void setStockEdate(Scanner input) {
 		System.out.print("Stock Expiration Date:");

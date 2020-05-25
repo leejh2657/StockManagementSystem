@@ -2,6 +2,8 @@ package stock;
 
 import java.util.Scanner;
 
+import exception.MdateFormatException;
+
 public class MeatStock extends Stock {
 	protected String origin;
 	protected String part;
@@ -15,8 +17,14 @@ public class MeatStock extends Stock {
 		setStockName(input); 
 
 		System.out.print("Stock Catching Date:");
-		String mdate = input.next();
-		this.setMdate(mdate);
+		try {
+			String mdate = input.next();
+			this.setMdate(mdate);
+		}
+		catch(MdateFormatException e) {
+			System.out.println("Incorrect Mdate Format. Put the date that contains ");
+
+		}
 
 		setStockEdate(input);
 

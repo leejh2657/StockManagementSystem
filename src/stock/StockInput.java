@@ -2,6 +2,8 @@ package stock;
 
 import java.util.Scanner;
 
+import exception.MdateFormatException;
+
 public interface StockInput {
 	
 	public int getNumber();
@@ -10,7 +12,7 @@ public interface StockInput {
 	
 	public void setName(String name);
 	
-	public void setMdate(String mdate);
+	public void setMdate(String mdate) throws MdateFormatException;
 	
 	public void setEdate(String edate);
 	

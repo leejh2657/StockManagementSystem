@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import stock.AgriculturalStock;
@@ -22,43 +23,54 @@ public class StockManager {
 		int kind = 0;
 		StockInput stockInput;
 		while (kind != 1 && kind != 2 && kind != 3 && kind != 4) {
-			System.out.println("Select Stock Kind:");
-			System.out.println("1 for Industrial Stock:");
-			System.out.println("2 for Agricultural Stock:");
-	 		System.out.println("3 for Fishery Stock:");
-			System.out.println("4 for Meat Stock:");
-			System.out.println(" Select num 1, 2, 3 or 4 for Stock Kind:");
-		    kind = input.nextInt();
-			if (kind ==1) {
-				stockInput = new IndustrialStock (StockKind.Industrial);
-				stockInput.getUserInput(input);
-				stocks.add(stockInput);
-				break;
+			try {
+				System.out.println("Select Stock Kind:");
+				System.out.println("1 for Industrial Stock:");
+				System.out.println("2 for Agricultural Stock:");
+				System.out.println("3 for Fishery Stock:");
+				System.out.println("4 for Meat Stock:");
+				System.out.println(" Select num 1, 2, 3 or 4 for Stock Kind:");
+				kind = input.nextInt();
+				if (kind ==1) {
+					stockInput = new IndustrialStock (StockKind.Industrial);
+					stockInput.getUserInput(input);
+					stocks.add(stockInput);
+					break;
+				}
+				else if (kind ==2) {
+					stockInput = new AgriculturalStock (StockKind.Agriculture);
+					stockInput.getUserInput(input);
+					stocks.add(stockInput);
+					break;
+					//
+				}
+				else if (kind ==3) {
+					stockInput = new FisheryStock (StockKind.Fishery);
+					stockInput.getUserInput(input);
+					stocks.add(stockInput);
+					break;
+				}
+				else if (kind ==4) {
+					stockInput = new MeatStock (StockKind.Meat);
+					stockInput.getUserInput(input);
+					stocks.add(stockInput);
+					break;
+				}
+				else {
+					System.out.print("Select num for Stock Kind between 1, 2, 3 and 4:");
+				}
 			}
-			else if (kind ==2) {
-				stockInput = new AgriculturalStock (StockKind.Agriculture);
-				stockInput.getUserInput(input);
-				stocks.add(stockInput);
-				break;
-				//
-			}
-			else if (kind ==3) {
-				stockInput = new FisheryStock (StockKind.Fishery);
-				stockInput.getUserInput(input);
-				stocks.add(stockInput);
-				break;
-			}
-			else if (kind ==4) {
-				stockInput = new MeatStock (StockKind.Meat);
-				stockInput.getUserInput(input);
-				stocks.add(stockInput);
-				break;
-			}
-			else {
-				System.out.print("Select num for Stock Kind between 1, 2, 3 and 4:");
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 5!");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}
+
+
 
 	public void deleteStock() {
 		System.out.print("Stock Number:");
