@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -6,18 +7,27 @@ import stock.AgriculturalStock;
 import stock.FisheryStock;
 import stock.IndustrialStock;
 import stock.MeatStock;
-import stock.Stock;
 import stock.StockInput;
 import stock.StockKind;
 
-public class StockManager {
+public class StockManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2957955150063190653L;
+	
+	
 	ArrayList<StockInput> stocks = new ArrayList<StockInput>();
-	Scanner input;
+	transient Scanner input;
 
 	StockManager(Scanner input){
 		this.input = input;
 
 	}
+	
+	public void setScanner(Scanner input) {
+        this.input = input;
+    }
 
 	public void addStock() {
 		int kind = 0;
