@@ -1,14 +1,19 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class StockViewer extends JFrame{
+public class StockViewer extends JPanel{
+	
+	WindowFrame frame;
 
-	public StockViewer() {
+	public StockViewer(WindowFrame frame) {
+		this.frame = frame;
+		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Number");
 		model.addColumn("Name");
@@ -19,10 +24,6 @@ public class StockViewer extends JFrame{
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
-	
 		
 		
 	}
