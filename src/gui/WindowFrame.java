@@ -3,22 +3,27 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
+
 public class WindowFrame extends JFrame{
 	
+	StockManager stockManager;
 	MenuSelection menuselection;
 	StockAdder stockadder;
 	StockViewer stockviewer;
 
 
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.stockadder = new StockAdder(this);
-		this.stockviewer = new StockViewer(this);
-		System.out.println("*****  " + stockviewer);
-		
+	public WindowFrame(StockManager stockManager) {
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		this.setTitle("My Frame");
+		
+		this.stockManager = stockManager;
+		menuselection = new MenuSelection(this);
+		stockadder = new StockAdder(this);
+		stockviewer = new StockViewer(this, this.stockManager);
+		
+		
 		this.setupPanel(menuselection);
 
 

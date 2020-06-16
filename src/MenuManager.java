@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -24,6 +25,8 @@ public class MenuManager {
 			stockManager.setScanner(input);
 		}
 
+		
+		WindowFrame frame = new WindowFrame(stockManager);
 		selectMenu(input, stockManager);
 		putObject(stockManager, "stockmanager.ser");
 	}
@@ -42,7 +45,7 @@ public class MenuManager {
 				case 2:
 					stockManager.deleteStock();
 					logger.log("delete a stock");
-					break;
+		     		break;
 				case 3:
 					stockManager.editStock();
 					logger.log("edit a stock");

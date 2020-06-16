@@ -7,6 +7,7 @@ import stock.AgriculturalStock;
 import stock.FisheryStock;
 import stock.IndustrialStock;
 import stock.MeatStock;
+import stock.Stock;
 import stock.StockInput;
 import stock.StockKind;
 
@@ -154,6 +155,13 @@ public class StockManager implements Serializable {
 		}
 	}
 	
+	public int size() {
+		return stocks.size();
+	}
+	
+	public StockInput get(int index) {
+		return (Stock) stocks.get(index);
+	}
 		
 	
 	

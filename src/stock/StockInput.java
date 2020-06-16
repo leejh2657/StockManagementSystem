@@ -10,9 +10,15 @@ public interface StockInput {
 	
 	public void setNumber(int number);
 	
+	public String getName();
+	
 	public void setName(String name);
 	
+	public String getMdate();
+	
 	public void setMdate(String mdate) throws MdateFormatException;
+	
+	public String getEdate();
 	
 	public void setEdate(String edate);
 	
